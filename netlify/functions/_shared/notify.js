@@ -2,10 +2,13 @@ const BRAND = 'SouthernCare Roadside';
 
 async function sendEmail({ to, subject, html, text }) {
   const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.FROM_EMAIL || 'invoices@southerncare-roadside.com';
+  const from = process.env.FROM_EMAIL;
   if (!apiKey) {
     console.warn('RESEND_API_KEY not set — skipping email');
     return { skipped: true };
+  }
+  if (!from) {
+    throw new Error('FROM_EMAIL environment variable is not set');
   }
 
   const res = await fetch('https://api.resend.com/emails', {
@@ -55,7 +58,11 @@ async function sendSMS(body) {
 }
 
 function notifyEmail() {
-  return process.env.NOTIFY_EMAIL || 'help@southerncare-roadside.com';
+  const email = process.env.NOTIFY_EMAIL;
+  if (!email) {
+    throw new Error('NOTIFY_EMAIL environment variable is not set');
+  }
+  return email;
 }
 
 function corsHeaders() {

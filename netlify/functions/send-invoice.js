@@ -17,7 +17,7 @@ function invoiceHtml(invoice) {
   return `
     <div style="font-family:sans-serif;max-width:600px;margin:0 auto;color:#111">
       <h1 style="color:#D97706">${BRAND}</h1>
-      <p style="color:#666">Marietta, GA · (770) 555-0100</p>
+      <p style="color:#666">Marietta, GA</p>
       <hr>
       <h2>Invoice ${invoice.invoice_number}</h2>
       <p><strong>Bill To:</strong> ${invoice.customer_name}<br>

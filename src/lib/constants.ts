@@ -3,9 +3,9 @@ export const BRAND = {
   shortName: 'SouthernCare',
   tagline: '24/7 Mobile Roadside Service',
   area: 'Marietta, GA & North Metro Atlanta',
-  phone: '(770) 555-0100',
-  phoneTel: '+17705550100',
-  email: 'help@southerncare-roadside.com',
+  phone: '(555) 123-4567',
+  phoneTel: '+15551234567',
+  email: 'contact@example.com',
   address: 'Marietta, GA 30060',
   taxRate: 0.07,
 } as const;
