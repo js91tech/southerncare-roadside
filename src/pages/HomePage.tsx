@@ -1,52 +1,47 @@
 import { Link } from 'react-router-dom';
 import { BRAND, SERVICE_AREAS, SERVICES } from '@/lib/constants';
 import { ServiceCard } from '@/components/ServiceCard';
+import { Hero } from '@/components/Hero';
+import { PromoGallery } from '@/components/PromoGallery';
+import { StatsBar } from '@/components/StatsBar';
 
 export function HomePage() {
   return (
     <div className="space-y-8">
-      <section className="relative overflow-hidden rounded-3xl border border-border/60 bg-gradient-to-br from-surface-card via-surface-elevated to-surface p-6">
-        <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-amber/5 blur-2xl" />
-        <p className="text-xs font-medium uppercase tracking-widest text-amber">24/7 Emergency Service</p>
-        <h1 className="mt-2 text-2xl font-bold leading-tight">
-          Mobile Roadside Help in <span className="text-amber">Marietta, GA</span>
-        </h1>
-        <p className="mt-3 text-sm leading-relaxed text-muted">
-          {BRAND.name} brings tire repair, jump starts, lockouts, and full roadside assistance
-          directly to you — no tow truck wait.
-        </p>
-        <div className="mt-5 flex flex-wrap gap-2">
-          <Link
-            to="/sos"
-            className="inline-flex items-center gap-2 rounded-xl bg-danger px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-danger/20 transition hover:bg-danger-dim"
-          >
-            Emergency SOS
-          </Link>
-          <Link
-            to="/book"
-            className="inline-flex items-center gap-2 rounded-xl bg-amber px-4 py-2.5 text-sm font-semibold text-surface transition hover:bg-amber-dim"
-          >
-            Book a Service
-          </Link>
-        </div>
-      </section>
+      <Hero />
+      <StatsBar />
+      <PromoGallery />
 
-      <section>
-        <h2 className="mb-3 text-sm font-semibold uppercase tracking-wide text-muted">Our Services</h2>
-        <div className="grid gap-3">
+      <section className="animate-fade-up space-y-3">
+        <h2 className="text-lg font-bold">Popular Services</h2>
+        <div className="grid gap-4 sm:grid-cols-2">
           {SERVICES.slice(0, 4).map((s) => (
-            <ServiceCard key={s.id} {...s} />
+            <ServiceCard key={s.id} {...s} variant="featured" />
           ))}
         </div>
-        <Link to="/services" className="mt-3 block text-center text-sm font-medium text-amber">
+        <Link
+          to="/services"
+          className="flex items-center justify-center gap-1 rounded-xl border border-border/60 bg-surface-elevated py-3 text-sm font-semibold text-amber transition hover:border-amber/40 hover:bg-amber/5"
+        >
           View all services →
         </Link>
       </section>
 
-      <section className="rounded-2xl border border-border/60 bg-surface-card p-5">
-        <h2 className="text-sm font-semibold">Service Area</h2>
-        <p className="mt-1 text-xs text-muted">Proudly serving Marietta and surrounding communities:</p>
-        <div className="mt-3 flex flex-wrap gap-2">
+      <section className="animate-fade-up overflow-hidden rounded-2xl border border-border/60 bg-surface-card">
+        <div className="relative h-32">
+          <img
+            src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80"
+            alt="Marietta service area"
+            className="h-full w-full object-cover"
+            loading="lazy"
+          />
+          <div className="absolute inset-0 bg-surface/70" />
+          <div className="absolute inset-0 flex flex-col justify-center p-5">
+            <h2 className="text-sm font-semibold">Serving Marietta & North Metro</h2>
+            <p className="mt-1 text-xs text-muted">Fast response across Cobb County and beyond</p>
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-2 p-4">
           {SERVICE_AREAS.map((area) => (
             <span
               key={area}
@@ -58,38 +53,67 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="rounded-2xl border border-border/60 bg-surface-card p-5">
-        <h2 className="text-sm font-semibold">Why SouthernCare?</h2>
-        <ul className="mt-3 space-y-2.5 text-sm text-muted">
-          <li className="flex gap-2">
-            <span className="text-amber">✓</span> Average 30-minute response in Marietta area
-          </li>
-          <li className="flex gap-2">
-            <span className="text-amber">✓</span> Licensed & insured mobile technicians
-          </li>
-          <li className="flex gap-2">
-            <span className="text-amber">✓</span> Upfront pricing — no hidden fees
-          </li>
-          <li className="flex gap-2">
-            <span className="text-amber">✓</span> Available 24 hours a day, 7 days a week
-          </li>
+      <section className="animate-fade-up rounded-2xl border border-border/60 bg-gradient-to-br from-surface-card to-surface-elevated p-5">
+        <h2 className="text-lg font-bold">Why SouthernCare?</h2>
+        <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+          {[
+            { title: 'Fast arrival', desc: '~30 min average in Marietta area' },
+            { title: 'Licensed & insured', desc: 'Professional mobile technicians' },
+            { title: 'Upfront pricing', desc: 'No hidden fees or surprises' },
+            { title: 'Always available', desc: '24 hours a day, 7 days a week' },
+          ].map((item) => (
+            <li
+              key={item.title}
+              className="rounded-xl border border-border/40 bg-surface/50 p-3"
+            >
+              <p className="text-sm font-semibold text-amber">{item.title}</p>
+              <p className="mt-0.5 text-xs text-muted">{item.desc}</p>
+            </li>
+          ))}
         </ul>
       </section>
 
-      <section className="space-y-3">
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-muted">What Customers Say</h2>
+      <section className="animate-fade-up space-y-3">
+        <h2 className="text-lg font-bold">Customer Reviews</h2>
         {[
-          { name: 'James R.', text: 'Flat tire at 11pm in East Cobb — they were there in 25 minutes. Lifesavers!' },
-          { name: 'Maria T.', text: 'Professional, fair pricing, and super friendly. Highly recommend.' },
+          {
+            name: 'James R.',
+            area: 'East Cobb',
+            text: 'Flat tire at 11pm — they were there in 25 minutes. Lifesavers!',
+          },
+          {
+            name: 'Maria T.',
+            area: 'Marietta',
+            text: 'Professional, fair pricing, and super friendly. Highly recommend.',
+          },
         ].map((t) => (
           <blockquote
             key={t.name}
             className="rounded-2xl border border-border/40 bg-surface-elevated p-4"
           >
-            <p className="text-sm italic text-muted">&ldquo;{t.text}&rdquo;</p>
-            <footer className="mt-2 text-xs font-medium text-amber">— {t.name}</footer>
+            <div className="flex gap-1 text-amber text-sm">★★★★★</div>
+            <p className="mt-2 text-sm italic text-slate-300">&ldquo;{t.text}&rdquo;</p>
+            <footer className="mt-2 text-xs font-medium text-muted">
+              — {t.name}, {t.area}
+            </footer>
           </blockquote>
         ))}
+      </section>
+
+      <section className="animate-fade-up rounded-2xl border border-amber/30 bg-gradient-to-r from-amber/15 to-amber/5 p-5 text-center">
+        <p className="text-sm font-semibold">Ready when you need us</p>
+        <p className="mt-1 text-xs text-muted">Call or book — we&apos;ll come to you</p>
+        <div className="mt-4 flex flex-wrap justify-center gap-2">
+          <a
+            href={`tel:${BRAND.phoneTel}`}
+            className="rounded-xl bg-amber px-5 py-2.5 text-sm font-bold text-surface"
+          >
+            {BRAND.phone}
+          </a>
+          <Link to="/book" className="rounded-xl border border-amber/50 px-5 py-2.5 text-sm font-semibold text-amber">
+            Book Online
+          </Link>
+        </div>
       </section>
     </div>
   );
