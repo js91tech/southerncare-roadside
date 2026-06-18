@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { BRAND, SERVICE_AREAS, SERVICES } from '@/lib/constants';
+import { BRAND, HERO_IMAGE, SERVICE_AREAS, SERVICES } from '@/lib/constants';
 import { ServiceCard } from '@/components/ServiceCard';
 import { Hero } from '@/components/Hero';
 import { PromoGallery } from '@/components/PromoGallery';
@@ -30,7 +30,7 @@ export function HomePage() {
       <section className="animate-fade-up overflow-hidden rounded-2xl border border-border/60 bg-surface-card">
         <div className="relative h-32">
           <img
-            src="/images/roadside.png"
+            src={HERO_IMAGE}
             alt="Marietta service area"
             className="h-full w-full object-cover"
             loading="lazy"

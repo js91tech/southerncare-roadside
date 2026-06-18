@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { BRAND, SERVICES } from '@/lib/constants';
+import { IMAGES } from '@/lib/images';
 import { ServiceCard } from '@/components/ServiceCard';
 
 export function ServicesPage() {
@@ -7,7 +8,7 @@ export function ServicesPage() {
     <div className="space-y-6">
       <section className="relative overflow-hidden rounded-2xl border border-border/50">
         <img
-          src="/images/tire.png"
+          src={IMAGES.tire}
           alt="Mobile mechanic services"
           className="h-36 w-full object-cover"
         />

@@ -10,7 +10,7 @@ export default defineConfig({
     tailwindcss(),
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['icon.svg'],
+      includeAssets: ['icon.svg', 'icon-maskable.svg'],
       manifest: {
         name: 'SouthernCare Roadside',
         short_name: 'SouthernCare',
@@ -50,8 +50,9 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,svg,woff2}'],
+        globPatterns: ['**/*.{js,css,html,ico,svg,woff2,png,jpg,jpeg,webp}'],
         navigateFallback: '/index.html',
+        navigateFallbackDenylist: [/^\/assets\//],
       },
     }),
   ],
