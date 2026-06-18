@@ -30,7 +30,7 @@ export function HomePage() {
       <section className="animate-fade-up overflow-hidden rounded-2xl border border-border/60 bg-surface-card">
         <div className="relative h-32">
           <img
-            src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80"
+            src="/images/roadside.png"
             alt="Marietta service area"
             className="h-full w-full object-cover"
             loading="lazy"

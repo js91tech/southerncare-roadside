@@ -7,7 +7,7 @@ export function ServicesPage() {
     <div className="space-y-6">
       <section className="relative overflow-hidden rounded-2xl border border-border/50">
         <img
-          src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?auto=format&fit=crop&w=900&q=80"
+          src="/images/tire.png"
           alt="Mobile mechanic services"
           className="h-36 w-full object-cover"
         />
